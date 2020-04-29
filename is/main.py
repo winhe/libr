@@ -53,7 +53,7 @@ def de():
 
 window = Tk()
 window.title("biblioteka")
-window.geometry('800x600')
+window.geometry('600x400')
 
 tab_control = ttk.Notebook(window)
 
@@ -62,77 +62,88 @@ tab2 = ttk.Frame(tab_control)
 tab3 = ttk.Frame(tab_control)
 
 tab_control.add(tab1, text='Регистрация/Вход')  
-tab_control.add(tab2, text='Личный кабинет',state = 'hidden')
+tab_control.add(tab2, text='Личный кабинет')
 tab_control.add(tab3, text='Личный кабинет',state = 'hidden')
 # ---------------------------------1
-l1 = Label(tab1,text = "login")
-l1.grid(column = 0,row = 0)
+f_center = LabelFrame(tab1,text = "registration")
+f_center.pack(expand = 1)
 
-login = Entry(tab1,width=10,textvariable = 'login')  
-login.grid(column=0, row=1)  
+l1 = Label(f_center,text = "login:")
+l1.grid(column=0, row=0 ,sticky=W)
 
-l2 = Label(tab1,text = "Password")
-l2.grid(column = 1,row = 0)
+login = Entry(f_center)  
+login.grid(column=1, row=0,columnspan = 3,sticky=W)  
 
-password = Entry(tab1,width=10)  
-password.grid(column=1, row=1) 
+l2 = Label(f_center,text = "Password:")
+l2.grid(column = 0,row = 1,sticky=W)
 
-btn = Button(tab1, text="Регистрация", command=registration)  
-btn.grid(column=2, row=1) 
+password = Entry(f_center)  
+password.grid(column=1, row=1,columnspan = 3,sticky=W) 
 
-btn2 = Button(tab1, text="Вход", command=au)  
-btn2.grid(column=3, row=1)   
+btn = Button(f_center, text="Регистрация", command=registration)  
+btn.grid(column=1, row=2) 
+
+btn2 = Button(f_center, text="Вход", command=au)  
+btn2.grid(column=2, row=2)   
 
 chk_state = BooleanVar() 
 chk_state.set(False)
-chk = Checkbutton(tab1, text='Администратор', var=chk_state)  
-chk.grid(column=4, row=1)  
+chk = Checkbutton(f_center, text='Администратор', var=chk_state)  
+chk.grid(column=3, row=0)  
 
-lbl = Label(tab1, text="")
+lbl = Label(f_center, text="")
 lbl.grid(column=1, row=3) 
 
 # ---------------------------------2
+f2_top = LabelFrame(tab2,text = "enter")
+f2_top.pack(anchor=W)
 
-l3 = Label(tab2,text = 'Кто взял')
-l3.grid(column = 0, row = 0)
-who = Combobox(tab2,width = 10)
+f2_bot = LabelFrame(tab2,text = "delete")
+f2_bot.pack(anchor=W)
+
+l3 = Label(f2_top,text = 'Студент:')
+l3.grid(column = 0, row = 0,sticky = W)
+who = Combobox(f2_top,width = 8)
 who['values'] = [lo[0] for lo in loginspasw]
-who.grid(column=0, row=1)  
+who.grid(column=1, row=0)  
 
-l4 = Label(tab2,text = 'Автор')
-l4.grid(column = 1, row = 0)
-avtor = Entry(tab2,width=10)
+l4 = Label(f2_top,text = 'Автор:')
+l4.grid(column = 0, row = 1,sticky = W)
+avtor = Entry(f2_top,width=10)
 avtor.grid(column=1, row=1)
 
-l5 = Label(tab2,text = 'Книга')
-l5.grid(column = 2, row = 0)
-book = Entry(tab2,width=10)
-book.grid(column=2, row=1)
+l5 = Label(f2_top,text = 'Книга:')
+l5.grid(column = 0, row = 2,sticky = W)
+book = Entry(f2_top,width=10)
+book.grid(column=1, row=2)
 
-l6 = Label(tab2,text = 'Дата')
-l6.grid(column = 3, row = 0)
-date = Entry(tab2,width=10)
-date.grid(column=3, row=1)
+l6 = Label(f2_top,text = 'Дата:')
+l6.grid(column = 0, row = 3,sticky = W)
+date = Entry(f2_top,width=10)
+date.grid(column=1, row=3)
 
-btn3 = Button(tab2, text="Занести в бд", command=go)  
-btn3.grid(column=4, row=1)
+btn3 = Button(f2_top, text="Занести в бд", command=go)  
+btn3.grid(column=0, row=4)
 
 
-l7 = Label(tab2,text = 'Кто?')
-l7.grid(column = 0, row = 2)
+l7 = Label(f2_bot,text = 'Студент:')
+l7.grid(column = 0, row = 0,sticky = W)
 
-w = Combobox(tab2,width = 10)
+l8 = Label(f2_bot,text = 'Книга:')
+l8.grid(column = 0, row = 1,sticky = W)
+
+w = Combobox(f2_bot,width = 20)
 w['values'] = [lo[0] for lo in loginspasw]
-w.grid(column=0, row=3)
+w.grid(column=1, row=0,sticky = W)
 
-btn5 = Button(tab2, text="поиск", command=wat2)  
-btn5.grid(column=1, row=3)  
+btn5 = Button(f2_bot, text="поиск", command=wat2)  
+btn5.grid(column=2, row=0 ,sticky = W)  
 
-wa2 = Combobox(tab2,width = 20)
-wa2.grid(column=2, row=3)
+wa2 = Combobox(f2_bot,width = 20)
+wa2.grid(column=1, row=1)
 
-btn6 = Button(tab2, text="убрать из бд", command=de)  
-btn6.grid(column=3, row=3)
+btn6 = Button(f2_bot, text="убрать из бд", command=de)  
+btn6.grid(column=2, row=1)
 
 # --------------------------------3
 
