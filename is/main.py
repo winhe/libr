@@ -62,7 +62,7 @@ tab2 = ttk.Frame(tab_control)
 tab3 = ttk.Frame(tab_control)
 
 tab_control.add(tab1, text='Регистрация/Вход')  
-tab_control.add(tab2, text='Личный кабинет')
+tab_control.add(tab2, text='Личный кабинет',state = 'hidden')
 tab_control.add(tab3, text='Личный кабинет',state = 'hidden')
 # ---------------------------------1
 f_center = LabelFrame(tab1,text = "registration")

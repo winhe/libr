@@ -21,3 +21,6 @@
 # 	print(row[1])
 
 # print(cursor.execute("SELECT * FROM albums ORDER by login"))
+# git commit -m 'dir' -a
+#   324  git push origin master 
+#   325  git remote add origin https://github.com/winhe/libr.git
